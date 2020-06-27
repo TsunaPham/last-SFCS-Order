@@ -9,24 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.IO;
 
 namespace SFCS
 {   
     public partial class Menu : UserControl
-    {
-        cnnString con = new cnnString();
-        SqlConnection cnn;
+    {   
         public Menu()
         {
             InitializeComponent();
-            cnn = con.cnn;
            
         }
-        private int vid;
-        public void setvid(int id)
+        private string vname="";
+        public void setvname(string name)
         {
-            this.vid= id;
+            this.vname = name;
         }
         
         private void Menu_Load(object sender, EventArgs e)
@@ -41,12 +37,11 @@ namespace SFCS
         private void populate()
         {  FoodItem[] flist = new FoodItem[15];
            
-            
+            SqlConnection cnn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\Admin\Desktop\SFCS\SFCS\SFCS.mdf; Integrated Security = True");
             string foodname = "";
             string fprice = "";
-            int vendor;
-            byte[] img;
-            string sql = "select * from ItemDB";
+            string vendor = "";
+            string sql = "select * from FoodItem";
             cnn.Open();
             SqlCommand cmd = new SqlCommand(sql, cnn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -55,14 +50,12 @@ namespace SFCS
             {
                 foodname = dr["Name"].ToString();
                 fprice = dr["Price"].ToString();
-                vendor = (int)dr["VendorID"];
-                //if(dr["Id"].ToString()=="1") 
+                vendor = dr["Vendor"].ToString();
                 flist[i] = new FoodItem();
                 flist[i].FName = foodname;
                 flist[i].FPrice = fprice;
                 flist[i].FVendor = vendor;
-                var data = (byte[])dr["Image"]; var stream = new MemoryStream(data); flist[i].img = Image.FromStream(stream); 
-                if (vendor==this.vid)
+                if(vendor.Trim()==this.vname.Trim())
                 flowLayoutPanel1.Controls.Add(flist[i]);
                 i++;
                

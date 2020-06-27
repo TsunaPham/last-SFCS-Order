@@ -32,7 +32,7 @@ namespace SFCS
 
         private void BtnNQ_Click(object sender, EventArgs e)
         {
-            menu1.setvid(1);
+            menu1.setvname("Com tam Ngo Quyen");
             menu1.Refresh();
             menu1.Show();
             btnBack.Show();
@@ -41,7 +41,7 @@ namespace SFCS
 
         private void BtnPY_Click(object sender, EventArgs e)
         {   
-            menu1.setvid(2);
+            menu1.setvname("Com ga Phu Yen");
             menu1.Refresh();
             menu1.Show();
             btnBack.Show();
@@ -50,7 +50,7 @@ namespace SFCS
 
         private void BtnBB_Click(object sender, EventArgs e)
         {
-            menu1.setvid(3);
+            menu1.setvname("Bun bo Hue");
             menu1.Refresh();
             menu1.Show();
             btnBack.Show();

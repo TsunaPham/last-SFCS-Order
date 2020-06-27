@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Security.Policy;
 
 namespace SFCS
 {
@@ -21,10 +20,10 @@ namespace SFCS
             btnAdd.Enabled = (this.quantity > 0);
             cnn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\Admin\Desktop\SFCS\SFCS\SFCS.mdf; Integrated Security = True");
         }
-        private int _vendor;
+        private string _vendor;
         private string _fname;
         private string _price;
-        private Image _image;
+        
         public string FName
         {
             get
@@ -43,7 +42,7 @@ namespace SFCS
             set
             { _price = value; lbPrice.Text = value; }
         }
-        public int FVendor
+        public string FVendor
         {
             get
             {
@@ -51,15 +50,6 @@ namespace SFCS
             }
             set
             { _vendor = value;  }
-        }
-        public Image img
-        {
-            get
-            {
-                return _image;
-            }
-            set
-            { _image = value;pictureBox1.Image = value; }
         }
         private int quantity=0;
         private int addqty = 0;

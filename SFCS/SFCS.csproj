@@ -74,7 +74,12 @@
     <Compile Include="CartView.Designer.cs">
       <DependentUpon>CartView.cs</DependentUpon>
     </Compile>
-    <Compile Include="cnnString.cs" />
+    <Compile Include="ChangePassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.Designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="FoodItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -143,11 +148,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WrongPassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WrongPassword.Designer.cs">
+      <DependentUpon>WrongPassword.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CartItem.resx">
       <DependentUpon>CartItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CartView.resx">
       <DependentUpon>CartView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FoodItem.resx">
       <DependentUpon>FoodItem.cs</DependentUpon>
@@ -186,6 +200,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="WrongPassword.resx">
+      <DependentUpon>WrongPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -203,15 +220,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SFCS.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SFCS_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>SFCS.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
