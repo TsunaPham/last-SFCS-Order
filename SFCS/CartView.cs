@@ -19,10 +19,10 @@ namespace SFCS
         public CartView()
         {
             InitializeComponent();
-            cnn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\Admin\Desktop\SFCS\SFCS\SFCS.mdf; Integrated Security = True");
+            cnn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Khoai.LAPTOP-SHJHO9TV\Desktop\SFCSDatabase.mdf;Integrated Security=True;Connect Timeout=30");
             deletecart();
             btnPay.Enabled = false;
-            con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\Desktop\SFCS\SFCS\AccountDB.mdf;Integrated Security=True;Connect Timeout=30");
+            con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Khoai.LAPTOP-SHJHO9TV\Desktop\SFCSDatabase.mdf;Integrated Security=True;Connect Timeout=30");
         }
         public void Refresh()
         {
@@ -38,8 +38,8 @@ namespace SFCS
         }
         private void deletecart()
         {
-            string sql = "DELETE FROM Ordertbl";
-            string sql1 = "DBCC CHECKIDENT (Ordertbl,RESEED,0)";
+            string sql = "DELETE FROM OrderDB";
+            string sql1 = "DBCC CHECKIDENT (OrderDB,RESEED,0)";
             SqlCommand cmd = new SqlCommand(sql, cnn);
             SqlCommand cmd1 = new SqlCommand(sql1, cnn);
             cnn.Open();
@@ -63,7 +63,7 @@ namespace SFCS
             string fqtystr = "";
             int fqty = 0;
             string sub = "";
-            int vdor;
+            string vdor = "";
             string sql = "select * from Ordertbl";
             cnn.Open();
             SqlCommand cmd = new SqlCommand(sql, cnn);
@@ -76,7 +76,7 @@ namespace SFCS
                 fqty = Convert.ToInt32(fqtystr.Trim());
                 sub = dr["Subprice"].ToString();
                 total += Convert.ToInt32(sub.Trim());
-                vdor = (int)dr["Vendor"];
+                vdor = dr["Vendor"].ToString();
                 cartlist[i] = new CartItem();
                 cartlist[i].FName = foodname;
                 cartlist[i].Qty = fqtystr;

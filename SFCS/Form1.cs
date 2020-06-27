@@ -10,8 +10,6 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.IO;
-
 namespace SFCS
 {
     public partial class Form1 : Form
@@ -74,10 +72,10 @@ namespace SFCS
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\Desktop\SFCS\SFCS\AccountDB.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Khoai.LAPTOP-SHJHO9TV\Desktop\SFCSDatabase.mdf;Integrated Security=True;Connect Timeout=30");
             int active = 0;
             con.Open();
-            SqlCommand cmd2 = new SqlCommand("Update Acctbl set isActive = @isActive where Username = @Username", con);
+            SqlCommand cmd2 = new SqlCommand("Update AccountDB set isActive = @isActive where Username = @Username", con);
             cmd2.Parameters.AddWithValue("@isActive", active);
             cmd2.Parameters.AddWithValue("@Username", usname);
             cmd2.ExecuteNonQuery();
@@ -96,16 +94,7 @@ namespace SFCS
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\Admin\Documents\SFCSDatabase.mdf; Integrated Security = True; Connect Timeout = 30");
-            byte[] buffer = File.ReadAllBytes("C:\\Users\\Admin\\Desktop\\SFCS_NEW-master\\imageDB\\pic15.jpg");
-            
-            string sql = "Update ItemDB set Image = @image where ID = @id";
-            con.Open();
-            SqlCommand command = new SqlCommand(sql,con);
-            command.Parameters.AddWithValue("@image", buffer);
-            command.Parameters.AddWithValue("@id", 15);
-            command.ExecuteNonQuery();
-            con.Close();
+
         }
 
         private void Recharge1_Load(object sender, EventArgs e)
@@ -116,18 +105,18 @@ namespace SFCS
         private void Rechargebtn_Click(object sender, EventArgs e)
         {
             string username = "";
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\Desktop\SFCS\SFCS\AccountDB.mdf;Integrated Security=True;Connect Timeout=30");
-            string sql = "select * from Acctbl;";
-            int isActive;
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Khoai.LAPTOP-SHJHO9TV\Desktop\SFCSDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+            string sql = "select * from AccountDB;";
+            bool isActive;
             bool islogged = false;
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                isActive = Convert.ToInt32(dr["isActive"].ToString().Trim());
+                isActive = (bool)dr["isActive"];
                 username = dr["Username"].ToString();
-                if (isActive == 1) { islogged = true; break; }
+                if (isActive == true) { islogged = true; break; }
             }
             con.Close();
             if (islogged == false) MessageBox.Show("Please sign in first");

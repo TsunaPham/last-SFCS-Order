@@ -46,10 +46,10 @@ namespace SFCS
 
         private void Signinbtn_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\Desktop\SFCS\SFCS\AccountDB.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Khoai.LAPTOP-SHJHO9TV\Desktop\SFCSDatabase.mdf;Integrated Security=True;Connect Timeout=30");
             int active = 0;
             con.Open();
-            SqlCommand cmd2 = new SqlCommand("Update Acctbl set isActive = @isActive where Username = @Username", con);
+            SqlCommand cmd2 = new SqlCommand("Update AccountDB set isActive = @isActive where Username = @Username", con);
             cmd2.Parameters.AddWithValue("@isActive", active);
             cmd2.Parameters.AddWithValue("@Username", usname);
             cmd2.ExecuteNonQuery();

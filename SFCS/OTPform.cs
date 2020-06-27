@@ -20,19 +20,19 @@ namespace SFCS
             InitializeComponent();
         }
 
-        private void confirmbtn_Click(object sender, EventArgs e)
+        public void confirmbtn_Click(object sender, EventArgs e)
         {
            string newvalOTP = OTPtxt.Text.ToString().Trim();
             if (newvalOTP == valOTP)
             {
-                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\Desktop\SFCS\SFCS\AccountDB.mdf;Integrated Security=True;Connect Timeout=30");
+                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Khoai.LAPTOP-SHJHO9TV\Desktop\SFCSDatabase.mdf;Integrated Security=True;Connect Timeout=30");
                 con.Open();
-                SqlCommand cmd2 = new SqlCommand("Update Acctbl set Balance = @Balance where Name = @Name", con);
+                SqlCommand cmd2 = new SqlCommand("Update AccountDB set Balance = @Balance where Name = @Name", con);
                 cmd2.Parameters.AddWithValue("@Balance", balance);
                 cmd2.Parameters.AddWithValue("@Name", name);
                 cmd2.ExecuteNonQuery();
                 con.Close();
-                MessageBox.Show("Validate Successful. Your new balance is "+balance+". Please reset this page to see the update");
+                MessageBox.Show("Validate Successful. Your new balance is "+balance+".");
                 this.Hide();
             }
             else { MessageBox.Show("Wrong OTP. Please enter again"); }
