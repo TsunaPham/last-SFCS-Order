@@ -13,6 +13,7 @@ namespace SFCS
 {
     public partial class Vendor : UserControl
     {
+        cnnString cnnstr = new cnnString();
         SqlConnection cnn;
         public Vendor()
         {
@@ -21,7 +22,7 @@ namespace SFCS
             menu1.Hide();
 
             btnBack.Hide();
-            cnn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\Admin\Desktop\SFCS\SFCS\SFCS.mdf; Integrated Security = True");
+            cnn = cnnstr.cnn;
         }
         
         private void VendorList1_Load(object sender, EventArgs e)
@@ -32,7 +33,7 @@ namespace SFCS
 
         private void BtnNQ_Click(object sender, EventArgs e)
         {
-            menu1.setvname("Com tam Ngo Quyen");
+            menu1.setvid(0);
             menu1.Refresh();
             menu1.Show();
             btnBack.Show();
@@ -41,7 +42,7 @@ namespace SFCS
 
         private void BtnPY_Click(object sender, EventArgs e)
         {   
-            menu1.setvname("Com ga Phu Yen");
+            menu1.setvid(1);
             menu1.Refresh();
             menu1.Show();
             btnBack.Show();
@@ -50,7 +51,7 @@ namespace SFCS
 
         private void BtnBB_Click(object sender, EventArgs e)
         {
-            menu1.setvname("Bun bo Hue");
+            menu1.setvid(2);
             menu1.Refresh();
             menu1.Show();
             btnBack.Show();
@@ -58,9 +59,10 @@ namespace SFCS
          
         }
         private void deletecart()
-        {
-            string sql = "DELETE FROM Ordertbl";
-            string sql1 = "DBCC CHECKIDENT (Ordertbl,RESEED,0)";
+        { 
+
+            string sql = "DELETE FROM TempoOrder";
+            string sql1 = "DBCC CHECKIDENT (TempoOrder,RESEED,0)";
             SqlCommand cmd = new SqlCommand(sql, cnn);
             SqlCommand cmd1 = new SqlCommand(sql1, cnn);
             cnn.Open();
@@ -70,12 +72,23 @@ namespace SFCS
         }
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("If you leave this vendor, your selected food will be deleted. Are you sure ?", "Leave the vendor", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            string stmt = "SELECT COUNT(*) FROM TempoOrder";
+            int count = 0;
+            cnn.Open();
+            SqlCommand cmdCount = new SqlCommand(stmt, cnn);
+            count = (int)cmdCount.ExecuteScalar();
+            cnn.Close();
+            
+            if (count > 0)
             {
-                deletecart();
-                menu1.Hide();
-                btnBack.Hide();
+                if (MessageBox.Show("If you leave this vendor, your selected food will be deleted. Are you sure ?", "Leave the vendor", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    deletecart();
+                    
+                }
             }
+            menu1.Hide();
+            btnBack.Hide();
         }
     }
         

@@ -122,7 +122,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Button confirmbtn;
+        private System.Windows.Forms.Button confirmbtn;
         private System.Windows.Forms.TextBox OTPtxt;
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.Label label2;

@@ -38,6 +38,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.lbPrice = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lbAvailable = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -49,7 +50,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(78, 80);
+            this.panel1.Size = new System.Drawing.Size(209, 219);
             this.panel1.TabIndex = 0;
             // 
             // pictureBox1
@@ -57,7 +58,8 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 68);
+            this.pictureBox1.Size = new System.Drawing.Size(203, 212);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
@@ -66,7 +68,7 @@
             this.lbName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbName.Font = new System.Drawing.Font("Cambria Math", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.lbName.Location = new System.Drawing.Point(84, -36);
+            this.lbName.Location = new System.Drawing.Point(215, -26);
             this.lbName.Name = "lbName";
             this.lbName.Size = new System.Drawing.Size(290, 69);
             this.lbName.TabIndex = 1;
@@ -79,7 +81,7 @@
             this.btnPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlus.ForeColor = System.Drawing.Color.Transparent;
             this.btnPlus.Image = ((System.Drawing.Image)(resources.GetObject("btnPlus.Image")));
-            this.btnPlus.Location = new System.Drawing.Point(413, 0);
+            this.btnPlus.Location = new System.Drawing.Point(467, 152);
             this.btnPlus.Name = "btnPlus";
             this.btnPlus.Size = new System.Drawing.Size(74, 63);
             this.btnPlus.TabIndex = 2;
@@ -93,7 +95,7 @@
             this.btnMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinus.ForeColor = System.Drawing.Color.Transparent;
             this.btnMinus.Image = ((System.Drawing.Image)(resources.GetObject("btnMinus.Image")));
-            this.btnMinus.Location = new System.Drawing.Point(552, 0);
+            this.btnMinus.Location = new System.Drawing.Point(604, 150);
             this.btnMinus.Name = "btnMinus";
             this.btnMinus.Size = new System.Drawing.Size(83, 65);
             this.btnMinus.TabIndex = 3;
@@ -104,7 +106,7 @@
             // 
             this.lbQty.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbQty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.lbQty.Location = new System.Drawing.Point(493, 24);
+            this.lbQty.Location = new System.Drawing.Point(561, 178);
             this.lbQty.Name = "lbQty";
             this.lbQty.Size = new System.Drawing.Size(53, 25);
             this.lbQty.TabIndex = 4;
@@ -116,9 +118,9 @@
             this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(641, 0);
+            this.btnAdd.Location = new System.Drawing.Point(693, 141);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(108, 74);
+            this.btnAdd.Size = new System.Drawing.Size(65, 74);
             this.btnAdd.TabIndex = 5;
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
@@ -128,7 +130,7 @@
             this.lbPrice.AutoSize = true;
             this.lbPrice.Font = new System.Drawing.Font("Cambria Math", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.lbPrice.Location = new System.Drawing.Point(84, 3);
+            this.lbPrice.Location = new System.Drawing.Point(215, 19);
             this.lbPrice.Name = "lbPrice";
             this.lbPrice.Size = new System.Drawing.Size(105, 106);
             this.lbPrice.TabIndex = 7;
@@ -139,16 +141,28 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.panel2.Location = new System.Drawing.Point(78, 79);
+            this.panel2.Location = new System.Drawing.Point(209, 218);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(726, 1);
+            this.panel2.Size = new System.Drawing.Size(555, 1);
             this.panel2.TabIndex = 8;
+            // 
+            // lbAvailable
+            // 
+            this.lbAvailable.AutoSize = true;
+            this.lbAvailable.Font = new System.Drawing.Font("Cambria Math", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAvailable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.lbAvailable.Location = new System.Drawing.Point(601, -26);
+            this.lbAvailable.Name = "lbAvailable";
+            this.lbAvailable.Size = new System.Drawing.Size(118, 106);
+            this.lbAvailable.TabIndex = 9;
+            this.lbAvailable.Text = "Available";
             // 
             // FoodItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.lbAvailable);
             this.Controls.Add(this.lbName);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnAdd);
@@ -158,7 +172,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbPrice);
             this.Name = "FoodItem";
-            this.Size = new System.Drawing.Size(804, 80);
+            this.Size = new System.Drawing.Size(764, 219);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -177,5 +191,6 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label lbPrice;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lbAvailable;
     }
 }

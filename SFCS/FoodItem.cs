@@ -8,22 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Security.Policy;
 
 namespace SFCS
 {
     public partial class FoodItem : UserControl
     {
         SqlConnection cnn;
+        cnnString con = new cnnString();
         public FoodItem()
         {
             InitializeComponent();
             btnAdd.Enabled = (this.quantity > 0);
-            cnn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\Admin\Desktop\SFCS\SFCS\SFCS.mdf; Integrated Security = True");
+            cnn = con.cnn;
         }
-        private string _vendor;
+        private int _vendor;
         private string _fname;
         private string _price;
-        
+        private Image _image;
+        private bool _avail;
         public string FName
         {
             get
@@ -42,7 +45,7 @@ namespace SFCS
             set
             { _price = value; lbPrice.Text = value; }
         }
-        public string FVendor
+        public int FVendor
         {
             get
             {
@@ -51,7 +54,36 @@ namespace SFCS
             set
             { _vendor = value;  }
         }
+        public Image img
+        {
+            get
+            {
+                return _image;
+            }
+            set
+            { _image = value;pictureBox1.Image = value; }
+        }
         private int quantity=0;
+        public int Qty
+        {
+            get
+            {
+                return quantity;
+            }
+            set
+            { quantity = value; }
+        }
+        public bool Avail
+        {
+            get
+            {
+                return _avail;
+            }
+            set
+            {
+                _avail = value;if (value == false) lbAvailable.Text = "Not available"; else lbAvailable.Text = "Avaialble";
+            }
+        }
         private int addqty = 0;
         private void BtnPlus_Click(object sender, EventArgs e)
         {   if (this.quantity<10)
@@ -76,7 +108,7 @@ namespace SFCS
        private void addfooditem()
         {
            
-            string sql = "INSERT INTO Ordertbl(Name,Quantity,SubPrice,Vendor) VALUES(@Name,@Quantity,@Subprice,@Vendor)";
+            string sql = "INSERT INTO TempoOrder(Name,Quantity,SubPrice,VendorID) VALUES(@Name,@Quantity,@Subprice,@VendorID)";
             SqlCommand cmd = new SqlCommand(sql, cnn);
 
             cnn.Open();
@@ -86,14 +118,14 @@ namespace SFCS
                 int k = Convert.ToInt32(FPrice.Trim());
                 int subprice = k * this.quantity;
                 cmd.Parameters.AddWithValue("@Subprice", subprice);
-                cmd.Parameters.AddWithValue("@Vendor", FVendor);
+                cmd.Parameters.AddWithValue("@VendorID", FVendor);
                 cmd.ExecuteNonQuery();
             
             cnn.Close();
         }
         private void searchitem()
         {
-            string sql= "select * from Ordertbl";
+            string sql= "select * from TempoOrder";
             string name = "";
             string qtystr = "";
             SqlCommand cmd = new SqlCommand(sql, cnn);
@@ -113,7 +145,7 @@ namespace SFCS
         }
         private void updateitem()
         {
-            string sql = "update Ordertbl set Quantity=@qty,Subprice=@sub where Name=@name";
+            string sql = "update TempoOrder set Quantity=@qty,Subprice=@sub where Name=@name";
             SqlCommand cmd = new SqlCommand(sql, cnn);
             int newqty = this.quantity + this.addqty;
             cnn.Open();

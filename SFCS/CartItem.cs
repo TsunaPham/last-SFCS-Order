@@ -12,11 +12,15 @@ namespace SFCS
 {
     public partial class CartItem : UserControl
     {
+        cnnString con = new cnnString();
         SqlConnection cnn;
+        cnnString cnnstr = new cnnString();
+        SqlConnection cnn1;
         public CartItem()
         {
             InitializeComponent();
-            cnn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Khoai.LAPTOP-SHJHO9TV\Desktop\SFCSDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+            cnn = cnnstr.cnn;
+            cnn1 = con.cnn;       
         }
 
         private void Label1_Click(object sender, EventArgs e)
@@ -27,7 +31,7 @@ namespace SFCS
         private string _fname;
         private string _qty;
         private string _subprice;
-        private string _vendor;
+        private int _vendor;
         private bool _del = false;
         public string FName
         {
@@ -56,7 +60,7 @@ namespace SFCS
             set
             { _subprice = value; lbSub.Text = _subprice; }
         }
-        public string Vendor
+        public int Vendor
         {
             get
             {
@@ -68,8 +72,8 @@ namespace SFCS
         public void Btndel_Click(object sender, EventArgs e)
         {
 
-            string sql = "DELETE FROM OrderDB WHERE Name=@name";
-            string sql1 = "DBCC CHECKIDENT (OrderDB,RESEED,0)";
+            string sql = "DELETE FROM TempoOrder WHERE Name=@name";
+            string sql1 = "DBCC CHECKIDENT (TempoOrder,RESEED,0)";
             SqlCommand cmd = new SqlCommand(sql, cnn);
             SqlCommand cmd1 = new SqlCommand(sql1, cnn);
             cnn.Open();

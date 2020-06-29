@@ -257,6 +257,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
+            this.AutoSize = true;
             this.Controls.Add(this.menu1);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnBB);
@@ -274,7 +275,7 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.panel2);
             this.Name = "Vendor";
-            this.Size = new System.Drawing.Size(804, 443);
+            this.Size = new System.Drawing.Size(807, 443);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

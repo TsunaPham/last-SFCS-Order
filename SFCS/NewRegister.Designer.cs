@@ -56,7 +56,6 @@
             this.Confirmtxt = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -337,22 +336,10 @@
             this.textBox3.Size = new System.Drawing.Size(273, 15);
             this.textBox3.TabIndex = 57;
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label12.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label12.Location = new System.Drawing.Point(775, 103);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(15, 20);
-            this.label12.TabIndex = 61;
-            this.label12.Text = "*";
-            // 
             // NewRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label12);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.Confirmtxt);
             this.Controls.Add(this.label11);
@@ -417,6 +404,5 @@
         private System.Windows.Forms.TextBox Confirmtxt;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label12;
     }
 }
