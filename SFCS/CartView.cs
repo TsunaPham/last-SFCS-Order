@@ -16,30 +16,39 @@ namespace SFCS
     {
         SqlConnection cnn;
         SqlConnection con;
+        cnnString cnnstr = new cnnString();
         public CartView()
         {
             InitializeComponent();
-            cnn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Khoai.LAPTOP-SHJHO9TV\Desktop\SFCSDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+            cnn = cnnstr.cnn;
             deletecart();
             btnPay.Enabled = false;
-            con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Khoai.LAPTOP-SHJHO9TV\Desktop\SFCSDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+            con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\Desktop\SFCS\SFCS\AccountDB.mdf;Integrated Security=True;Connect Timeout=30");
         }
-        public void Refresh()
+        public void refresh()
         {
             flowLayoutPanel1.Controls.Clear();
             populate();
         }
         private Int32 total = 0;
         private string _cusname = "";
+        
         public string Cusname
         {
             get { return _cusname; }
             set { _cusname = value; }
         }
+        public int isactive { get; set; }
+        
+        public int orderID;
+        public int accID
+        {get;set;
+        }
+        public bool success { get; set; }
         private void deletecart()
         {
-            string sql = "DELETE FROM OrderDB";
-            string sql1 = "DBCC CHECKIDENT (OrderDB,RESEED,0)";
+            string sql = "DELETE FROM TempoOrder";
+            string sql1 = "DBCC CHECKIDENT (TempoOrder,RESEED,0)";
             SqlCommand cmd = new SqlCommand(sql, cnn);
             SqlCommand cmd1 = new SqlCommand(sql1, cnn);
             cnn.Open();
@@ -63,27 +72,28 @@ namespace SFCS
             string fqtystr = "";
             int fqty = 0;
             string sub = "";
-            string vdor = "";
-            string sql = "select * from Ordertbl";
+            int vdor;
+            string sql = "select * from TempoOrder";
             cnn.Open();
             SqlCommand cmd = new SqlCommand(sql, cnn);
             SqlDataReader dr = cmd.ExecuteReader();
             int i = 0;
             while (dr.Read())
-            {
+            { 
                 foodname = dr["Name"].ToString();
                 fqtystr = dr["Quantity"].ToString();
                 fqty = Convert.ToInt32(fqtystr.Trim());
                 sub = dr["Subprice"].ToString();
                 total += Convert.ToInt32(sub.Trim());
-                vdor = dr["Vendor"].ToString();
+                vdor = (int)dr["VendorID"];
                 cartlist[i] = new CartItem();
                 cartlist[i].FName = foodname;
                 cartlist[i].Qty = fqtystr;
                 cartlist[i].Sub = sub;
-                cartlist[i].Vendor = vdor;
+                cartlist[i].Vendor = vdor; cartlist[i].btndel.Click += new System.EventHandler(this.btndel_Click);
                 flowLayoutPanel1.Controls.Add(cartlist[i]);
-                cartlist[i].btndel.Click += new System.EventHandler(this.btndel_Click);
+              
+
                 i++;
                 amount++;
 
@@ -96,16 +106,54 @@ namespace SFCS
 
 
         }
+        
+        
 
         private void btndel_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Do you want to delete this item from cart", "Delete Item", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
-                Refresh();
+                refresh();
 
             }
+            
         }
-        
+       private int orderid()
+        {
+            string sql = "select * from OrderDB";
+            cnn.Open();
+            SqlCommand cmd = new SqlCommand(sql, cnn);
+            SqlDataReader dr = cmd.ExecuteReader();
+            
+            int id = 0;
+            while (dr.Read())
+            {
+                id = (int)dr["OrderID"];
+            }
+            cnn.Close();
+            return ++id;
+            
+        }
+        private void updateOrderLine()
+        {
+           
+           orderID = orderid();
+            cnn.Open();
+            for (int i=0;i<amount;i++)
+            {
+                string sql = "INSERT INTO OrderLineDB(OrderID,Name,Quantity,SubPrice,VendorID) VALUES(@OrderID,@Name,@Quantity,@SubPrice,@VendorID)";
+                SqlCommand cmd = new SqlCommand(sql, cnn);
+                cmd.Parameters.AddWithValue("@OrderID", orderID);
+                cmd.Parameters.AddWithValue("@Name", cartlist[i].FName);
+
+                cmd.Parameters.AddWithValue("@Quantity", cartlist[i].Qty);
+                cmd.Parameters.AddWithValue("@VendorID", cartlist[i].Vendor);
+                cmd.Parameters.AddWithValue("@SubPrice", cartlist[i].Sub);
+                
+                cmd.ExecuteNonQuery();
+            }
+            cnn.Close();
+        }
         private void CartView_Load(object sender, EventArgs e)
         {
 
@@ -145,48 +193,58 @@ namespace SFCS
         }
 
         private static Random random = new Random();
-        public static string RandomString(int length)
+        public DateTime RandomDay()
         {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            return new string(Enumerable.Repeat(chars, length)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
+            DateTime start = new DateTime(2020, 6, 28);
+            DateTime end = new DateTime(2021, 6, 28);
+            int range = (end-start).Days;           
+            return start.AddDays(random.Next(range));
+        }
+        public void Alert(string msg, Noti.enmType type)
+        {
+            Noti frm = new Noti();
+            frm.showAlert(msg, type);
         }
         private void btnPay_Click(object sender, EventArgs e)
-        {   if (_cusname == "") MessageBox.Show("Please login before making payment");
+        {   if (isactive == 0) MessageBox.Show("Please login before making payment");
             else
             {
                 if (MessageBox.Show("Do you want to pay for this order", "Payment", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
-
-
-                    string orderid = RandomString(10);
-                    int month = random.Next(1, 13);
-                    int day = random.Next(1, 31);
+                    updateOrderLine();
+                    
                     Int32 balance = Checkbalance();
+                    success = false;
 
                     if (balance > -1)
                     {
+                        
+                        success = true;
+                        DateTime datetime = RandomDay();
+                       
                         MessageBox.Show("Payment successful - Your balance is now " + balance.ToString());
-                        string sql = "INSERT INTO Salestbl(OrderID,AccID,TotalPrice,Vendor,Month,Day) VALUES(@OrderID,@AccID,@TotalPrice,@Vendor,@Month,@Day)";
+                        string sql = "INSERT INTO OrderDB(AccountID,Total,VendorID,Datetime,Done) VALUES(@AccountID,@Total,@VendorID,@Datetime,@Done)";
                         SqlCommand cmd = new SqlCommand(sql, cnn);
 
                         cnn.Open();
 
-                        cmd.Parameters.AddWithValue("@OrderID", orderid);
-                        cmd.Parameters.AddWithValue("AccID", 101);
+                       
+                        cmd.Parameters.AddWithValue("AccountID", accID);
 
-                        cmd.Parameters.AddWithValue("@TotalPrice", total);
-                        cmd.Parameters.AddWithValue("@Vendor", cartlist[0].Vendor);
-                        cmd.Parameters.AddWithValue("@Month", month);
-                        cmd.Parameters.AddWithValue("@Day", day);
+                        cmd.Parameters.AddWithValue("@Total", total);
+                        cmd.Parameters.AddWithValue("@VendorID", cartlist[0].Vendor);
+                        cmd.Parameters.AddWithValue("@Datetime", datetime);
+                        cmd.Parameters.AddWithValue("Done", false);
+                       
                         cmd.ExecuteNonQuery();
 
                         cnn.Close();
 
                         Updatebalance(balance);
                         deletecart();
-                        Refresh();
+                        refresh();
+                        this.Alert("Your order is being prepared", Noti.enmType.Waiting);
                     }
                     else MessageBox.Show("Payment failed - Your balance isn't enough, please recharge your account");
 
@@ -194,5 +252,7 @@ namespace SFCS
                 }
             }
         }
+
+       
     }
 }

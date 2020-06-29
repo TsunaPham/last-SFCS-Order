@@ -37,16 +37,14 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Signinbtn = new System.Windows.Forms.Button();
+            this.Googlebtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.Registerbtn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.linkForgot = new System.Windows.Forms.LinkLabel();
-            this.Changebtn = new System.Windows.Forms.Button();
-            this.wrongPassword1 = new SFCS.WrongPassword();
             this.newRegister1 = new SFCS.NewRegister();
             this.loginSuccess1 = new SFCS.loginSuccess();
-            this.changePassword1 = new SFCS.ChangePassword();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -136,6 +134,19 @@
             this.Signinbtn.UseVisualStyleBackColor = false;
             this.Signinbtn.Click += new System.EventHandler(this.Signinbtn_Click);
             // 
+            // Googlebtn
+            // 
+            this.Googlebtn.BackColor = System.Drawing.SystemColors.Highlight;
+            this.Googlebtn.FlatAppearance.BorderSize = 0;
+            this.Googlebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Googlebtn.ForeColor = System.Drawing.Color.White;
+            this.Googlebtn.Location = new System.Drawing.Point(591, 249);
+            this.Googlebtn.Name = "Googlebtn";
+            this.Googlebtn.Size = new System.Drawing.Size(201, 62);
+            this.Googlebtn.TabIndex = 20;
+            this.Googlebtn.Text = "Sign in with Google";
+            this.Googlebtn.UseVisualStyleBackColor = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -192,32 +203,10 @@
             this.linkForgot.TabIndex = 28;
             this.linkForgot.TabStop = true;
             this.linkForgot.Text = "Forgot your password?";
-            this.linkForgot.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkForgot_LinkClicked);
-            // 
-            // Changebtn
-            // 
-            this.Changebtn.BackColor = System.Drawing.SystemColors.Highlight;
-            this.Changebtn.FlatAppearance.BorderSize = 0;
-            this.Changebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Changebtn.ForeColor = System.Drawing.Color.White;
-            this.Changebtn.Location = new System.Drawing.Point(576, 249);
-            this.Changebtn.Name = "Changebtn";
-            this.Changebtn.Size = new System.Drawing.Size(201, 62);
-            this.Changebtn.TabIndex = 29;
-            this.Changebtn.Text = "Change Password";
-            this.Changebtn.UseVisualStyleBackColor = false;
-            this.Changebtn.Click += new System.EventHandler(this.Changebtn_Click);
-            // 
-            // wrongPassword1
-            // 
-            this.wrongPassword1.Location = new System.Drawing.Point(0, 0);
-            this.wrongPassword1.Name = "wrongPassword1";
-            this.wrongPassword1.Size = new System.Drawing.Size(805, 444);
-            this.wrongPassword1.TabIndex = 30;
             // 
             // newRegister1
             // 
-            this.newRegister1.Location = new System.Drawing.Point(0, 3);
+            this.newRegister1.Location = new System.Drawing.Point(0, 0);
             this.newRegister1.Name = "newRegister1";
             this.newRegister1.Size = new System.Drawing.Size(805, 444);
             this.newRegister1.TabIndex = 27;
@@ -229,26 +218,18 @@
             this.loginSuccess1.Size = new System.Drawing.Size(805, 444);
             this.loginSuccess1.TabIndex = 26;
             // 
-            // changePassword1
-            // 
-            this.changePassword1.Location = new System.Drawing.Point(0, 0);
-            this.changePassword1.Name = "changePassword1";
-            this.changePassword1.Size = new System.Drawing.Size(805, 444);
-            this.changePassword1.TabIndex = 31;
-            // 
             // NewLoginControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.changePassword1);
-            this.Controls.Add(this.wrongPassword1);
             this.Controls.Add(this.newRegister1);
             this.Controls.Add(this.loginSuccess1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Registerbtn);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.Googlebtn);
             this.Controls.Add(this.Signinbtn);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -258,7 +239,6 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.linkForgot);
-            this.Controls.Add(this.Changebtn);
             this.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.Name = "NewLoginControl";
             this.Size = new System.Drawing.Size(805, 444);
@@ -279,6 +259,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button Signinbtn;
+        private System.Windows.Forms.Button Googlebtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Registerbtn;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -286,8 +267,5 @@
         private loginSuccess loginSuccess1;
         private NewRegister newRegister1;
         private System.Windows.Forms.LinkLabel linkForgot;
-        private System.Windows.Forms.Button Changebtn;
-        private WrongPassword wrongPassword1;
-        private ChangePassword changePassword1;
     }
 }

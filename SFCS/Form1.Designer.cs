@@ -44,6 +44,7 @@ namespace SFCS
             this.btnMenu = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.recharge1 = new SFCS.Recharge();
             this.newLoginControl1 = new SFCS.NewLoginControl();
             this.cartView1 = new SFCS.CartView();
@@ -223,6 +224,18 @@ namespace SFCS
             this.label2.TabIndex = 4;
             this.label2.Text = "SMART FOOD COURT";
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.Location = new System.Drawing.Point(923, 100);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(68, 44);
+            this.btnRefresh.TabIndex = 10;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // recharge1
             // 
             this.recharge1.Location = new System.Drawing.Point(198, 141);
@@ -242,16 +255,20 @@ namespace SFCS
             // 
             // cartView1
             // 
+            this.cartView1.accID = 0;
             this.cartView1.Amount = 0;
             this.cartView1.Cusname = "";
+            this.cartView1.isactive = 0;
             this.cartView1.Location = new System.Drawing.Point(197, 142);
             this.cartView1.Name = "cartView1";
             this.cartView1.Size = new System.Drawing.Size(804, 443);
+            this.cartView1.success = false;
             this.cartView1.TabIndex = 7;
             // 
             // vendor1
             // 
             this.vendor1.AutoScroll = true;
+            this.vendor1.AutoSize = true;
             this.vendor1.Location = new System.Drawing.Point(199, 142);
             this.vendor1.Name = "vendor1";
             this.vendor1.Size = new System.Drawing.Size(804, 445);
@@ -272,6 +289,7 @@ namespace SFCS
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1003, 585);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.recharge1);
             this.Controls.Add(this.newLoginControl1);
             this.Controls.Add(this.cartView1);
@@ -317,6 +335,7 @@ namespace SFCS
         private NewLoginControl newLoginControl1;
         private Recharge recharge1;
         private System.Windows.Forms.Button Rechargebtn;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
 

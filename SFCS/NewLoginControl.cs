@@ -13,13 +13,13 @@ namespace SFCS
 {
     public partial class NewLoginControl : UserControl
     {
+        public int isActive = 0;
+        public int accid = 0;
         public NewLoginControl()
         {
             InitializeComponent();
             loginSuccess1.Hide();
             newRegister1.Hide();
-            wrongPassword1.Hide();
-            changePassword1.Hide();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -41,8 +41,8 @@ namespace SFCS
 
         private void Signinbtn_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Khoai.LAPTOP-SHJHO9TV\Desktop\SFCSDatabase.mdf;Integrated Security=True;Connect Timeout=30");
-            SqlDataAdapter sqa = new SqlDataAdapter("Select count(*) From AccountDB where Username ='" + textBox1.Text + "' and Password = '" + textBox2.Text + "'", con);
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\Desktop\SFCS\SFCS\AccountDB.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlDataAdapter sqa = new SqlDataAdapter("Select count(*) From Acctbl where Username ='" + textBox1.Text + "' and Password = '" + textBox2.Text + "'", con);
             DataTable dt = new DataTable();
             sqa.Fill(dt);
             if (dt.Rows[0][0].ToString() == "1")
@@ -53,26 +53,29 @@ namespace SFCS
                 string text = textBox1.Text;
                 string usname = "";
                 string name = "";
-                string sql = "select * from AccountDB;";
+                string sql = "select * from Acctbl;";
                 con.Open();
                 SqlCommand cmd = new SqlCommand(sql, con);
                 SqlDataReader dr = cmd.ExecuteReader();
               while (dr.Read())
                 {
+                    isActive = 1;
                     usname = dr["Username"].ToString();
                     name = dr["Name"].ToString();
+                    accid = (int)dr["AccID"];
                     if (usname.Trim() == text.Trim()) break;
                 }
                 con.Close();
                 int active = 1;
                 con.Open();
-                SqlCommand cmd2 = new SqlCommand("Update AccountDB set isActive = @isActive where Username = @Username", con);
+                SqlCommand cmd2 = new SqlCommand("Update Acctbl set isActive = @isActive where Username = @Username", con);
                 cmd2.Parameters.AddWithValue("@isActive", active);
                 cmd2.Parameters.AddWithValue("@Username", usname);
                 cmd2.ExecuteNonQuery();
                 con.Close();
                 loginSuccess1.setName(name);
                 loginSuccess1.setusName(usname);
+                loginSuccess1.accid = accid;
                 loginSuccess1.refreshing();
                 loginSuccess1.Show();
             }
@@ -84,15 +87,6 @@ namespace SFCS
             newRegister1.Show();
 
         }
-
-        private void linkForgot_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            wrongPassword1.Show();
-        }
-
-        private void Changebtn_Click(object sender, EventArgs e)
-        {
-            changePassword1.Show();
-        }
+        
     }
 }

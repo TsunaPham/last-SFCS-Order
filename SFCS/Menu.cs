@@ -9,20 +9,24 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace SFCS
 {   
     public partial class Menu : UserControl
-    {   
+    {
+        cnnString con = new cnnString();
+        SqlConnection cnn;
         public Menu()
         {
             InitializeComponent();
+            cnn = con.cnn;
            
         }
-        private string vname="";
-        public void setvname(string name)
+        private int vid;
+        public void setvid(int id)
         {
-            this.vname = name;
+            this.vid= id;
         }
         
         private void Menu_Load(object sender, EventArgs e)
@@ -34,14 +38,29 @@ namespace SFCS
             flowLayoutPanel1.Controls.Clear();
             populate();
         }
+        public int countrow()
+        {
+            string stmt = "SELECT COUNT(*) FROM ItemDB";
+            int count = 0;
+            cnn.Open();
+            SqlCommand cmdCount = new SqlCommand(stmt, cnn);
+            count = (int)cmdCount.ExecuteScalar();
+            cnn.Close();
+
+            return count;
+        }
         private void populate()
-        {  FoodItem[] flist = new FoodItem[15];
+        {
+            int count = countrow();
+            FoodItem[] flist = new FoodItem[count];
            
-            SqlConnection cnn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\Admin\Desktop\SFCS\SFCS\SFCS.mdf; Integrated Security = True");
+            
             string foodname = "";
             string fprice = "";
-            string vendor = "";
-            string sql = "select * from FoodItem";
+            int vendor;
+            bool avail;
+            byte[] img;
+            string sql = "select * from ItemDB";
             cnn.Open();
             SqlCommand cmd = new SqlCommand(sql, cnn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -50,13 +69,19 @@ namespace SFCS
             {
                 foodname = dr["Name"].ToString();
                 fprice = dr["Price"].ToString();
-                vendor = dr["Vendor"].ToString();
+                vendor = (int)dr["VendorID"];
+                avail = (bool)dr["Available"];
+                //if(dr["Id"].ToString()=="1") 
                 flist[i] = new FoodItem();
                 flist[i].FName = foodname;
                 flist[i].FPrice = fprice;
                 flist[i].FVendor = vendor;
-                if(vendor.Trim()==this.vname.Trim())
+                flist[i].Avail = avail;
+                if (avail == false) flist[i].Enabled = false;
+                var data = (byte[])dr["Image"]; var stream = new MemoryStream(data); flist[i].img = Image.FromStream(stream); 
+                if (vendor==this.vid)
                 flowLayoutPanel1.Controls.Add(flist[i]);
+                
                 i++;
                
             }
