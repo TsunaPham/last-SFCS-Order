@@ -27,6 +27,7 @@ namespace SFCS
             mainPage1.BringToFront();
             cnn = cnnstr.cnn;
             btnRefresh.Hide();
+            lbMaintenance.Hide();
             if (maintenance() == false)
             {
                
@@ -36,7 +37,7 @@ namespace SFCS
 
                 Rechargebtn.Enabled = false;
                 btnCus.Enabled = false;
-                MessageBox.Show("He thong dang duoc bao tri, Moi quy khach quay lai sau !");
+                lbMaintenance.Show();
 
             }
             else 

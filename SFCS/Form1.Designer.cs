@@ -51,6 +51,7 @@ namespace SFCS
             this.vendor1 = new SFCS.Vendor();
             this.mainPage1 = new SFCS.MainPage();
             this.cart1 = new SFCS.Cart();
+            this.lbMaintenance = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -268,7 +269,7 @@ namespace SFCS
             this.vendor1.AutoSize = true;
             this.vendor1.Location = new System.Drawing.Point(199, 142);
             this.vendor1.Name = "vendor1";
-            this.vendor1.Size = new System.Drawing.Size(804, 445);
+            this.vendor1.Size = new System.Drawing.Size(804, 446);
             this.vendor1.TabIndex = 6;
             // 
             // mainPage1
@@ -288,12 +289,24 @@ namespace SFCS
             this.cart1.Size = new System.Drawing.Size(804, 443);
             this.cart1.TabIndex = 11;
             // 
+            // lbMaintenance
+            // 
+            this.lbMaintenance.AutoSize = true;
+            this.lbMaintenance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMaintenance.ForeColor = System.Drawing.Color.Red;
+            this.lbMaintenance.Location = new System.Drawing.Point(667, 58);
+            this.lbMaintenance.Name = "lbMaintenance";
+            this.lbMaintenance.Size = new System.Drawing.Size(289, 18);
+            this.lbMaintenance.TabIndex = 12;
+            this.lbMaintenance.Text = "Hệ thống đang tạm ngưng hoạt động !";
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1003, 585);
+            this.Controls.Add(this.lbMaintenance);
             this.Controls.Add(this.cart1);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.recharge1);
@@ -342,6 +355,7 @@ namespace SFCS
         private System.Windows.Forms.Button Rechargebtn;
         private System.Windows.Forms.Button btnRefresh;
         private Cart cart1;
+        private System.Windows.Forms.Label lbMaintenance;
     }
 }
 
