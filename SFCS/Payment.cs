@@ -175,6 +175,7 @@ namespace SFCS
 
 
                     this.Alert("Đơn hàng của bạn đang được chuẩn bị", Notice.enmType.Waiting);
+                    
                 }
                 else MessageBox.Show("Thanh toán thất bại, đề nghị nạp thêm tiền vào tài khoản");
             }

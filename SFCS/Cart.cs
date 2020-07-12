@@ -259,6 +259,7 @@ namespace SFCS
                     payment1.setActive(isactive);
                     
                     payment1.Show();
+                    isCheck = true;
                     //Int64 balance = checkbalance();
                     //isCheck = false;
 

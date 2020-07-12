@@ -101,7 +101,7 @@ namespace SFCS
         }
         private void btnPay_Click(object sender, EventArgs e)
         {
-            if (cartView1.getisCheck() == true) btnRefresh.Show();
+            if (cart1.getisCheck() == true) btnRefresh.Show();
         }
         private void BtnCus_Click(object sender, EventArgs e)
         {
@@ -204,8 +204,9 @@ namespace SFCS
                 if (id == cartView1.orderID) break;
             }
             cnn.Close();
+
+            if (done == true) { this.Alert("Đơn hàng của quý khách đã hoàn thành", Notice.enmType.Success); btnRefresh.Hide(); }
             
-            if (done == true) this.Alert("Your order is finished", Notice.enmType.Success);
         }
     }
 }
