@@ -48,6 +48,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -68,11 +75,17 @@
     <Compile Include="CartItem.Designer.cs">
       <DependentUpon>CartItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="CartView.cs">
+    <Compile Include="Cart.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CartView.Designer.cs">
-      <DependentUpon>CartView.cs</DependentUpon>
+    <Compile Include="Cart.Designer.cs">
+      <DependentUpon>Cart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.Designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
     <Compile Include="cnnString.cs" />
     <Compile Include="FoodItem.cs">
@@ -93,17 +106,11 @@
     <Compile Include="historyline.Designer.cs">
       <DependentUpon>historyline.cs</DependentUpon>
     </Compile>
-    <Compile Include="Noti.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Noti.Designer.cs">
-      <DependentUpon>Noti.cs</DependentUpon>
-    </Compile>
-    <Compile Include="loginSuccess.cs">
+    <Compile Include="History.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="loginSuccess.Designer.cs">
-      <DependentUpon>loginSuccess.cs</DependentUpon>
+    <Compile Include="History.Designer.cs">
+      <DependentUpon>History.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu.cs">
       <SubType>UserControl</SubType>
@@ -111,17 +118,24 @@
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewLoginControl.cs">
+    <Compile Include="MoMoSecurity.cs" />
+    <Compile Include="LoginControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="NewLoginControl.Designer.cs">
-      <DependentUpon>NewLoginControl.cs</DependentUpon>
+    <Compile Include="LoginControl.Designer.cs">
+      <DependentUpon>LoginControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewRegister.cs">
+    <Compile Include="Register.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="NewRegister.Designer.cs">
-      <DependentUpon>NewRegister.cs</DependentUpon>
+    <Compile Include="Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notice.Designer.cs">
+      <DependentUpon>Notice.cs</DependentUpon>
     </Compile>
     <Compile Include="OTPform.cs">
       <SubType>UserControl</SubType>
@@ -129,17 +143,18 @@
     <Compile Include="OTPform.Designer.cs">
       <DependentUpon>OTPform.cs</DependentUpon>
     </Compile>
+    <Compile Include="Payment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Payment.Designer.cs">
+      <DependentUpon>Payment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentRequest.cs" />
     <Compile Include="Recharge.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Recharge.Designer.cs">
       <DependentUpon>Recharge.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VendorList.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="VendorList.Designer.cs">
-      <DependentUpon>VendorList.cs</DependentUpon>
     </Compile>
     <Compile Include="MainPage.cs">
       <SubType>UserControl</SubType>
@@ -155,11 +170,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WrongPassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WrongPassword.Designer.cs">
+      <DependentUpon>WrongPassword.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CartItem.resx">
       <DependentUpon>CartItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CartView.resx">
-      <DependentUpon>CartView.cs</DependentUpon>
+    <EmbeddedResource Include="Cart.resx">
+      <DependentUpon>Cart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FoodItem.resx">
       <DependentUpon>FoodItem.cs</DependentUpon>
@@ -170,29 +194,29 @@
     <EmbeddedResource Include="historyline.resx">
       <DependentUpon>historyline.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Noti.resx">
-      <DependentUpon>Noti.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="loginSuccess.resx">
-      <DependentUpon>loginSuccess.cs</DependentUpon>
+    <EmbeddedResource Include="History.resx">
+      <DependentUpon>History.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewLoginControl.resx">
-      <DependentUpon>NewLoginControl.cs</DependentUpon>
+    <EmbeddedResource Include="LoginControl.resx">
+      <DependentUpon>LoginControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewRegister.resx">
-      <DependentUpon>NewRegister.cs</DependentUpon>
+    <EmbeddedResource Include="Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notice.resx">
+      <DependentUpon>Notice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OTPform.resx">
       <DependentUpon>OTPform.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Payment.resx">
+      <DependentUpon>Payment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Recharge.resx">
       <DependentUpon>Recharge.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VendorList.resx">
-      <DependentUpon>VendorList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainPage.resx">
       <DependentUpon>MainPage.cs</DependentUpon>
@@ -203,6 +227,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WrongPassword.resx">
+      <DependentUpon>WrongPassword.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -223,15 +250,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SFCS.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SFCS_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>SFCS.mdf</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
@@ -244,7 +262,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

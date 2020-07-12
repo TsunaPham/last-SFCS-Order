@@ -33,30 +33,28 @@ namespace SFCS
 
         private void BtnNQ_Click(object sender, EventArgs e)
         {
-            menu1.setvid(0);
-            menu1.Refresh();
-            menu1.Show();
-            btnBack.Show();
+            selectVendor(1);
             
         }
 
         private void BtnPY_Click(object sender, EventArgs e)
-        {   
-            menu1.setvid(1);
-            menu1.Refresh();
-            menu1.Show();
-            btnBack.Show();
-            
+        {
+            selectVendor(2);
+
         }
 
         private void BtnBB_Click(object sender, EventArgs e)
         {
-            menu1.setvid(2);
-            menu1.Refresh();
-            menu1.Show();
-            btnBack.Show();
+            selectVendor(3);
             
          
+        }
+        private void selectVendor(int vid)
+        {
+            menu1.setvid(vid);
+            menu1.viewMenu();
+            menu1.Show();
+            btnBack.Show();
         }
         private void deletecart()
         { 
@@ -72,19 +70,23 @@ namespace SFCS
         }
         private void BtnBack_Click(object sender, EventArgs e)
         {
+            backtoVendor();
+        }
+        private void backtoVendor()
+        {
             string stmt = "SELECT COUNT(*) FROM TempoOrder";
             int count = 0;
             cnn.Open();
             SqlCommand cmdCount = new SqlCommand(stmt, cnn);
             count = (int)cmdCount.ExecuteScalar();
             cnn.Close();
-            
+
             if (count > 0)
             {
                 if (MessageBox.Show("If you leave this vendor, your selected food will be deleted. Are you sure ?", "Leave the vendor", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     deletecart();
-                    
+
                 }
             }
             menu1.Hide();

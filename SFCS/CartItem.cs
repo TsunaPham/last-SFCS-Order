@@ -29,8 +29,8 @@ namespace SFCS
         }
 
         private string _fname;
-        private string _qty;
-        private string _subprice;
+        private int _qty;
+        private Int64 _subprice;
         private int _vendor;
         private bool _del = false;
         public string FName
@@ -42,23 +42,23 @@ namespace SFCS
             set
             { _fname = value; lbName.Text = value; }
         }
-        public string Qty
+        public int Qty
         {
             get
             {
                 return _qty;
             }
             set
-            { _qty = value; lbQty.Text = value; }
+            { _qty = value; lbQty.Text = value.ToString(); }
         }
-        public string Sub
+        public Int64 Sub
         {
             get
             {
                 return _subprice;
             }
             set
-            { _subprice = value; lbSub.Text = _subprice; }
+            { _subprice = value; lbSub.Text = _subprice.ToString(); }
         }
         public int Vendor
         {
@@ -72,6 +72,12 @@ namespace SFCS
         public void Btndel_Click(object sender, EventArgs e)
         {
 
+            deleteItem();
+
+
+        }
+        private void deleteItem()
+        {
             string sql = "DELETE FROM TempoOrder WHERE Name=@name";
             string sql1 = "DBCC CHECKIDENT (TempoOrder,RESEED,0)";
             SqlCommand cmd = new SqlCommand(sql, cnn);
@@ -81,8 +87,6 @@ namespace SFCS
             cmd.ExecuteNonQuery();
             cmd1.ExecuteNonQuery();
             cnn.Close();
-
-
         }
     }
 }

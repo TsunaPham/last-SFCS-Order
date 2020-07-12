@@ -60,7 +60,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(689, 365);
+            this.pictureBox2.Location = new System.Drawing.Point(689, 378);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(89, 65);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -70,13 +70,13 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label1.Location = new System.Drawing.Point(485, 392);
+            this.label1.Location = new System.Drawing.Point(472, 394);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(178, 38);
+            this.label1.Size = new System.Drawing.Size(211, 36);
             this.label1.TabIndex = 0;
-            this.label1.Text = "View Menu";
+            this.label1.Text = "Xem thực đơn";
             // 
             // panel1
             // 
@@ -112,9 +112,9 @@
             this.lbNQ.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.lbNQ.Location = new System.Drawing.Point(129, 31);
             this.lbNQ.Name = "lbNQ";
-            this.lbNQ.Size = new System.Drawing.Size(221, 23);
+            this.lbNQ.Size = new System.Drawing.Size(212, 23);
             this.lbNQ.TabIndex = 7;
-            this.lbNQ.Text = "Com tam Ngo Quyen";
+            this.lbNQ.Text = "Cơm tấm Ngô Quyền";
             // 
             // lbPY
             // 
@@ -123,9 +123,9 @@
             this.lbPY.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.lbPY.Location = new System.Drawing.Point(129, 166);
             this.lbPY.Name = "lbPY";
-            this.lbPY.Size = new System.Drawing.Size(174, 23);
+            this.lbPY.Size = new System.Drawing.Size(171, 23);
             this.lbPY.TabIndex = 10;
-            this.lbPY.Text = "Com ga Phu Yen";
+            this.lbPY.Text = "Cơm gà Phú Yên";
             // 
             // panel3
             // 
@@ -161,9 +161,9 @@
             this.lbBB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.lbBB.Location = new System.Drawing.Point(129, 287);
             this.lbBB.Name = "lbBB";
-            this.lbBB.Size = new System.Drawing.Size(123, 23);
+            this.lbBB.Size = new System.Drawing.Size(120, 23);
             this.lbBB.TabIndex = 13;
-            this.lbBB.Text = "Bun bo Hue";
+            this.lbBB.Text = "Bún bò Huế";
             // 
             // panel5
             // 
@@ -201,7 +201,7 @@
             this.btnNQ.Name = "btnNQ";
             this.btnNQ.Size = new System.Drawing.Size(105, 51);
             this.btnNQ.TabIndex = 14;
-            this.btnNQ.Text = "View";
+            this.btnNQ.Text = "Xem";
             this.btnNQ.UseVisualStyleBackColor = true;
             this.btnNQ.Click += new System.EventHandler(this.BtnNQ_Click);
             // 
@@ -214,7 +214,7 @@
             this.btnPY.Name = "btnPY";
             this.btnPY.Size = new System.Drawing.Size(105, 51);
             this.btnPY.TabIndex = 15;
-            this.btnPY.Text = "View";
+            this.btnPY.Text = "Xem";
             this.btnPY.UseVisualStyleBackColor = true;
             this.btnPY.Click += new System.EventHandler(this.BtnPY_Click);
             // 
@@ -227,7 +227,7 @@
             this.btnBB.Name = "btnBB";
             this.btnBB.Size = new System.Drawing.Size(105, 51);
             this.btnBB.TabIndex = 16;
-            this.btnBB.Text = "View";
+            this.btnBB.Text = "Xem";
             this.btnBB.UseVisualStyleBackColor = true;
             this.btnBB.Click += new System.EventHandler(this.BtnBB_Click);
             // 
@@ -239,17 +239,17 @@
             this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnBack.Location = new System.Drawing.Point(19, 380);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(90, 60);
+            this.btnBack.Size = new System.Drawing.Size(103, 60);
             this.btnBack.TabIndex = 18;
-            this.btnBack.Text = "Back";
+            this.btnBack.Text = "Quay về";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
             // menu1
             // 
-            this.menu1.Location = new System.Drawing.Point(0, 0);
+            this.menu1.Location = new System.Drawing.Point(0, -3);
             this.menu1.Name = "menu1";
-            this.menu1.Size = new System.Drawing.Size(804, 374);
+            this.menu1.Size = new System.Drawing.Size(804, 377);
             this.menu1.TabIndex = 17;
             // 
             // Vendor
@@ -275,7 +275,7 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.panel2);
             this.Name = "Vendor";
-            this.Size = new System.Drawing.Size(807, 443);
+            this.Size = new System.Drawing.Size(804, 443);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

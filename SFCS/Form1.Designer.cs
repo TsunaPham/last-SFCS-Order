@@ -46,10 +46,11 @@ namespace SFCS
             this.label2 = new System.Windows.Forms.Label();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.recharge1 = new SFCS.Recharge();
-            this.newLoginControl1 = new SFCS.NewLoginControl();
-            this.cartView1 = new SFCS.CartView();
+            this.newLoginControl1 = new SFCS.LoginControl();
+            this.cartView1 = new SFCS.Cart();
             this.vendor1 = new SFCS.Vendor();
             this.mainPage1 = new SFCS.MainPage();
+            this.cart1 = new SFCS.Cart();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -115,7 +116,7 @@ namespace SFCS
             this.Rechargebtn.Name = "Rechargebtn";
             this.Rechargebtn.Size = new System.Drawing.Size(179, 73);
             this.Rechargebtn.TabIndex = 8;
-            this.Rechargebtn.Text = "Recharge";
+            this.Rechargebtn.Text = "Nạp tiền";
             this.Rechargebtn.UseVisualStyleBackColor = true;
             this.Rechargebtn.Click += new System.EventHandler(this.Rechargebtn_Click);
             // 
@@ -151,7 +152,7 @@ namespace SFCS
             this.btnCus.Name = "btnCus";
             this.btnCus.Size = new System.Drawing.Size(179, 73);
             this.btnCus.TabIndex = 7;
-            this.btnCus.Text = "Customer";
+            this.btnCus.Text = "Tài khoản";
             this.btnCus.UseVisualStyleBackColor = true;
             this.btnCus.Click += new System.EventHandler(this.BtnCus_Click);
             // 
@@ -167,7 +168,7 @@ namespace SFCS
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(179, 73);
             this.btnHome.TabIndex = 6;
-            this.btnHome.Text = "Home";
+            this.btnHome.Text = "Trang chủ";
             this.btnHome.UseVisualStyleBackColor = true;
             this.btnHome.Click += new System.EventHandler(this.BtnHome_Click);
             // 
@@ -183,7 +184,7 @@ namespace SFCS
             this.btnCart.Name = "btnCart";
             this.btnCart.Size = new System.Drawing.Size(179, 73);
             this.btnCart.TabIndex = 5;
-            this.btnCart.Text = "View Cart";
+            this.btnCart.Text = "Giỏ hàng";
             this.btnCart.UseVisualStyleBackColor = true;
             this.btnCart.Click += new System.EventHandler(this.BtnCart_Click);
             // 
@@ -199,7 +200,7 @@ namespace SFCS
             this.btnMenu.Name = "btnMenu";
             this.btnMenu.Size = new System.Drawing.Size(179, 73);
             this.btnMenu.TabIndex = 4;
-            this.btnMenu.Text = "  View Menu";
+            this.btnMenu.Text = "Xem thực đơn";
             this.btnMenu.UseVisualStyleBackColor = true;
             this.btnMenu.Click += new System.EventHandler(this.BtnMenu_Click);
             // 
@@ -229,16 +230,16 @@ namespace SFCS
             this.btnRefresh.FlatAppearance.BorderSize = 0;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.Location = new System.Drawing.Point(923, 100);
+            this.btnRefresh.Location = new System.Drawing.Point(916, 97);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(68, 44);
+            this.btnRefresh.Size = new System.Drawing.Size(75, 47);
             this.btnRefresh.TabIndex = 10;
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // recharge1
             // 
-            this.recharge1.Location = new System.Drawing.Point(198, 141);
+            this.recharge1.Location = new System.Drawing.Point(199, 142);
             this.recharge1.Name = "recharge1";
             this.recharge1.Size = new System.Drawing.Size(805, 444);
             this.recharge1.TabIndex = 9;
@@ -255,14 +256,10 @@ namespace SFCS
             // 
             // cartView1
             // 
-            this.cartView1.accID = 0;
             this.cartView1.Amount = 0;
-            this.cartView1.Cusname = "";
-            this.cartView1.isactive = 0;
             this.cartView1.Location = new System.Drawing.Point(197, 142);
             this.cartView1.Name = "cartView1";
             this.cartView1.Size = new System.Drawing.Size(804, 443);
-            this.cartView1.success = false;
             this.cartView1.TabIndex = 7;
             // 
             // vendor1
@@ -283,16 +280,24 @@ namespace SFCS
             this.mainPage1.Size = new System.Drawing.Size(805, 443);
             this.mainPage1.TabIndex = 5;
             // 
+            // cart1
+            // 
+            this.cart1.Amount = 0;
+            this.cart1.Location = new System.Drawing.Point(200, 141);
+            this.cart1.Name = "cart1";
+            this.cart1.Size = new System.Drawing.Size(804, 443);
+            this.cart1.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1003, 585);
+            this.Controls.Add(this.cart1);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.recharge1);
             this.Controls.Add(this.newLoginControl1);
-            this.Controls.Add(this.cartView1);
             this.Controls.Add(this.vendor1);
             this.Controls.Add(this.mainPage1);
             this.Controls.Add(this.label2);
@@ -302,7 +307,7 @@ namespace SFCS
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Trang chủ";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.panel2.ResumeLayout(false);
@@ -331,11 +336,12 @@ namespace SFCS
         private System.Windows.Forms.Label label2;
         private MainPage mainPage1;
         private Vendor vendor1;
-        private CartView cartView1;
-        private NewLoginControl newLoginControl1;
+        private Cart cartView1;
+        private LoginControl newLoginControl1;
         private Recharge recharge1;
         private System.Windows.Forms.Button Rechargebtn;
         private System.Windows.Forms.Button btnRefresh;
+        private Cart cart1;
     }
 }
 

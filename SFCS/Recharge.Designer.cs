@@ -64,11 +64,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label1.Location = new System.Drawing.Point(427, 150);
+            this.label1.Location = new System.Drawing.Point(404, 150);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 20);
+            this.label1.Size = new System.Drawing.Size(130, 20);
             this.label1.TabIndex = 37;
-            this.label1.Text = "Select Bank";
+            this.label1.Text = "Chọn ngân hàng";
             // 
             // label2
             // 
@@ -77,9 +77,9 @@
             this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label2.Location = new System.Drawing.Point(404, 307);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 20);
+            this.label2.Size = new System.Drawing.Size(139, 20);
             this.label2.TabIndex = 38;
-            this.label2.Text = "Amount of money ";
+            this.label2.Text = "Số tiền muốn nạp";
             // 
             // amountbox
             // 
@@ -102,9 +102,9 @@
             this.label3.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label3.Location = new System.Drawing.Point(404, 194);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(136, 20);
+            this.label3.Size = new System.Drawing.Size(101, 20);
             this.label3.TabIndex = 40;
-            this.label3.Text = "Account number ";
+            this.label3.Text = "Số tài khoản";
             // 
             // accnamebox
             // 
@@ -120,9 +120,9 @@
             this.label4.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label4.Location = new System.Drawing.Point(404, 236);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 20);
+            this.label4.Size = new System.Drawing.Size(109, 20);
             this.label4.TabIndex = 42;
-            this.label4.Text = "Account name";
+            this.label4.Text = "Tên tài khoản";
             // 
             // hellolbl
             // 
@@ -131,9 +131,9 @@
             this.hellolbl.ForeColor = System.Drawing.SystemColors.Highlight;
             this.hellolbl.Location = new System.Drawing.Point(13, 9);
             this.hellolbl.Name = "hellolbl";
-            this.hellolbl.Size = new System.Drawing.Size(48, 20);
+            this.hellolbl.Size = new System.Drawing.Size(74, 20);
             this.hellolbl.TabIndex = 44;
-            this.hellolbl.Text = "Hello";
+            this.hellolbl.Text = "Xin chào";
             // 
             // label5
             // 
@@ -142,16 +142,16 @@
             this.label5.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label5.Location = new System.Drawing.Point(13, 45);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(129, 20);
+            this.label5.Size = new System.Drawing.Size(265, 20);
             this.label5.TabIndex = 45;
-            this.label5.Text = "Your balance is:";
+            this.label5.Text = "Số dư tài khoản hiện tại của bạn là";
             // 
             // balancelbl
             // 
             this.balancelbl.AutoSize = true;
             this.balancelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.balancelbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.balancelbl.Location = new System.Drawing.Point(158, 45);
+            this.balancelbl.Location = new System.Drawing.Point(296, 45);
             this.balancelbl.Name = "balancelbl";
             this.balancelbl.Size = new System.Drawing.Size(74, 20);
             this.balancelbl.TabIndex = 46;
@@ -167,7 +167,7 @@
             this.Rechargebtn.Name = "Rechargebtn";
             this.Rechargebtn.Size = new System.Drawing.Size(132, 59);
             this.Rechargebtn.TabIndex = 54;
-            this.Rechargebtn.Text = "Recharge";
+            this.Rechargebtn.Text = "Xác nhận";
             this.Rechargebtn.UseVisualStyleBackColor = false;
             this.Rechargebtn.Click += new System.EventHandler(this.Rechargebtn_Click);
             // 
@@ -230,15 +230,15 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 19F);
             this.label10.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label10.Location = new System.Drawing.Point(419, 45);
+            this.label10.Location = new System.Drawing.Point(545, 45);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(323, 37);
+            this.label10.Size = new System.Drawing.Size(166, 37);
             this.label10.TabIndex = 61;
-            this.label10.Text = "RECHARGE MONEY";
+            this.label10.Text = "NẠP TIỀN";
             // 
             // otPform1
             // 
-            this.otPform1.Location = new System.Drawing.Point(0, 0);
+            this.otPform1.Location = new System.Drawing.Point(0, -2);
             this.otPform1.Name = "otPform1";
             this.otPform1.Size = new System.Drawing.Size(807, 446);
             this.otPform1.TabIndex = 62;

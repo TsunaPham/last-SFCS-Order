@@ -42,11 +42,11 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 19F);
             this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label2.Location = new System.Drawing.Point(44, 22);
+            this.label2.Location = new System.Drawing.Point(112, 21);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(467, 37);
+            this.label2.Size = new System.Drawing.Size(302, 37);
             this.label2.TabIndex = 63;
-            this.label2.Text = "FORGOT YOUR PASSWORD?";
+            this.label2.Text = "QUÊN MẬT KHẨU?";
             // 
             // cancelbtn
             // 
@@ -58,7 +58,7 @@
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(132, 59);
             this.cancelbtn.TabIndex = 62;
-            this.cancelbtn.Text = "Cancel";
+            this.cancelbtn.Text = "Huỷ bỏ";
             this.cancelbtn.UseVisualStyleBackColor = false;
             this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
             // 
@@ -80,7 +80,7 @@
             this.confirmbtn.Name = "confirmbtn";
             this.confirmbtn.Size = new System.Drawing.Size(132, 59);
             this.confirmbtn.TabIndex = 60;
-            this.confirmbtn.Text = "Confirm";
+            this.confirmbtn.Text = "Xác nhận";
             this.confirmbtn.UseVisualStyleBackColor = false;
             this.confirmbtn.Click += new System.EventHandler(this.confirmbtn_Click);
             // 
@@ -89,11 +89,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label1.Location = new System.Drawing.Point(47, 82);
+            this.label1.Location = new System.Drawing.Point(68, 81);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(417, 20);
+            this.label1.Size = new System.Drawing.Size(395, 20);
             this.label1.TabIndex = 59;
-            this.label1.Text = "Please enter your email here to retrieve your password";
+            this.label1.Text = "Hãy nhập email của bạn vào đây để lấy lại mật khẩu";
             // 
             // panel1
             // 

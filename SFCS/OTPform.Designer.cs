@@ -34,6 +34,7 @@
             this.cancelbtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -41,11 +42,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label1.Location = new System.Drawing.Point(281, 183);
+            this.label1.Location = new System.Drawing.Point(58, 84);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(235, 20);
+            this.label1.Size = new System.Drawing.Size(295, 20);
             this.label1.TabIndex = 37;
-            this.label1.Text = "Please confirm your OTP here";
+            this.label1.Text = "Hãy nhập OTP bạn nhận được vào đây";
             // 
             // confirmbtn
             // 
@@ -57,7 +58,7 @@
             this.confirmbtn.Name = "confirmbtn";
             this.confirmbtn.Size = new System.Drawing.Size(132, 59);
             this.confirmbtn.TabIndex = 54;
-            this.confirmbtn.Text = "Confirm";
+            this.confirmbtn.Text = "Xác nhận";
             this.confirmbtn.UseVisualStyleBackColor = false;
             this.confirmbtn.Click += new System.EventHandler(this.confirmbtn_Click);
             // 
@@ -79,7 +80,7 @@
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(132, 59);
             this.cancelbtn.TabIndex = 56;
-            this.cancelbtn.Text = "Cancel";
+            this.cancelbtn.Text = "Huỷ";
             this.cancelbtn.UseVisualStyleBackColor = false;
             this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
             // 
@@ -90,13 +91,14 @@
             this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label2.Location = new System.Drawing.Point(332, 112);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 37);
+            this.label2.Size = new System.Drawing.Size(142, 37);
             this.label2.TabIndex = 57;
-            this.label2.Text = "VERIFY";
+            this.label2.Text = "Xác thực";
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(194, 97);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(405, 269);
@@ -110,10 +112,11 @@
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.OTPtxt);
             this.Controls.Add(this.confirmbtn);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Name = "OTPform";
             this.Size = new System.Drawing.Size(807, 446);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,7 +125,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button confirmbtn;
+        public System.Windows.Forms.Button confirmbtn;
         private System.Windows.Forms.TextBox OTPtxt;
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.Label label2;

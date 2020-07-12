@@ -44,9 +44,9 @@ namespace SFCS
                 return vendor;
             }
             set
-            { vendor = value; if (value == 1) lbVendor.Text = "Com ga Phu Yen";
-                if (value == 0) lbVendor.Text = "Com tam Ngo Quyen";
-                if (value == 2) lbVendor.Text = "Bun bo Hue";
+            { vendor = value; if (value == 2) lbVendor.Text = "Com ga Phu Yen";
+                if (value == 1) lbVendor.Text = "Com tam Ngo Quyen";
+                if (value == 3) lbVendor.Text = "Bun bo Hue";
             }
         }
         private int quantity = 0;

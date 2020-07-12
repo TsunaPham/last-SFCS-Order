@@ -39,6 +39,7 @@
             this.lbPrice = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbAvailable = new System.Windows.Forms.Label();
+            this.lbDescrip = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -130,7 +131,7 @@
             this.lbPrice.AutoSize = true;
             this.lbPrice.Font = new System.Drawing.Font("Cambria Math", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.lbPrice.Location = new System.Drawing.Point(215, 19);
+            this.lbPrice.Location = new System.Drawing.Point(212, 19);
             this.lbPrice.Name = "lbPrice";
             this.lbPrice.Size = new System.Drawing.Size(105, 106);
             this.lbPrice.TabIndex = 7;
@@ -157,6 +158,17 @@
             this.lbAvailable.TabIndex = 9;
             this.lbAvailable.Text = "Available";
             // 
+            // lbDescrip
+            // 
+            this.lbDescrip.AutoSize = true;
+            this.lbDescrip.Font = new System.Drawing.Font("Cambria Math", 10.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDescrip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.lbDescrip.Location = new System.Drawing.Point(309, 19);
+            this.lbDescrip.Name = "lbDescrip";
+            this.lbDescrip.Size = new System.Drawing.Size(90, 106);
+            this.lbDescrip.TabIndex = 10;
+            this.lbDescrip.Text = "Mô tả";
+            // 
             // FoodItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -171,6 +183,7 @@
             this.Controls.Add(this.btnPlus);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbPrice);
+            this.Controls.Add(this.lbDescrip);
             this.Name = "FoodItem";
             this.Size = new System.Drawing.Size(764, 219);
             this.panel1.ResumeLayout(false);
@@ -192,5 +205,6 @@
         private System.Windows.Forms.Label lbPrice;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lbAvailable;
+        private System.Windows.Forms.Label lbDescrip;
     }
 }

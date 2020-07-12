@@ -14,33 +14,41 @@ namespace SFCS
     public partial class OTPform : UserControl
     {   string valOTP = "";
         int balance = 0;
-        string name="";
+        string username="";
+        cnnString cnnstr = new cnnString();
+        SqlConnection cnn;
         public OTPform()
         {
             InitializeComponent();
+            cnn = cnnstr.cnn;
         }
-
-        private void confirmbtn_Click(object sender, EventArgs e)
+        bool validateOTP(string OTP)
+        {
+            if (OTP == valOTP) return true;
+            else return false;
+        }
+        void updateBalance()
+        {
+                cnn.Open();
+                SqlCommand cmd2 = new SqlCommand("Update AccountDB set Balance = @Balance where Username = @Username", cnn);
+                cmd2.Parameters.AddWithValue("@Balance", balance);
+                cmd2.Parameters.AddWithValue("@Username", username);
+                cmd2.ExecuteNonQuery();
+                cnn.Close();
+                MessageBox.Show("Xác thực thành công. Số dư tài khoản hiện tại của bạn là " + balance + ".");
+                this.Hide();
+        }
+        public void confirmbtn_Click(object sender, EventArgs e)
         {
            string newvalOTP = OTPtxt.Text.ToString().Trim();
-            if (newvalOTP == valOTP)
-            {
-                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\Desktop\SFCS\SFCS\AccountDB.mdf;Integrated Security=True;Connect Timeout=30");
-                con.Open();
-                SqlCommand cmd2 = new SqlCommand("Update Acctbl set Balance = @Balance where Name = @Name", con);
-                cmd2.Parameters.AddWithValue("@Balance", balance);
-                cmd2.Parameters.AddWithValue("@Name", name);
-                cmd2.ExecuteNonQuery();
-                con.Close();
-                MessageBox.Show("Validate Successful. Your new balance is "+balance+". Please reset this page to see the update");
-                this.Hide();
-            }
-            else { MessageBox.Show("Wrong OTP. Please enter again"); }
-            
+            bool isValid = validateOTP(newvalOTP);
+            if (isValid == true) updateBalance();
+            else { MessageBox.Show("Sai mã OTP. Hãy nhập lại một lần nữa."); }
+
         }
         public void setvalOTP(string OTP) { valOTP=OTP; }
         public void setbalance(int balance) { this.balance = balance; }
-        public void setname(string name) { this.name = name; }
+        public void setusername(string Username) { this.username = Username; }
 
         private void cancelbtn_Click(object sender, EventArgs e)
         {

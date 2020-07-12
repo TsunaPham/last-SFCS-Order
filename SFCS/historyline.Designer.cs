@@ -39,9 +39,9 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 79);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(750, 1);
+            this.panel1.Size = new System.Drawing.Size(669, 1);
             this.panel1.TabIndex = 0;
             // 
             // lbDate
@@ -57,22 +57,22 @@
             // lbVendor
             // 
             this.lbVendor.AutoSize = true;
-            this.lbVendor.Location = new System.Drawing.Point(328, 30);
+            this.lbVendor.Location = new System.Drawing.Point(309, 28);
             this.lbVendor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbVendor.Name = "lbVendor";
-            this.lbVendor.Size = new System.Drawing.Size(53, 21);
+            this.lbVendor.Size = new System.Drawing.Size(72, 21);
             this.lbVendor.TabIndex = 2;
-            this.lbVendor.Text = "Date";
+            this.lbVendor.Text = "Vendor";
             // 
             // lbTotal
             // 
             this.lbTotal.AutoSize = true;
-            this.lbTotal.Location = new System.Drawing.Point(581, 30);
+            this.lbTotal.Location = new System.Drawing.Point(554, 28);
             this.lbTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTotal.Name = "lbTotal";
-            this.lbTotal.Size = new System.Drawing.Size(53, 21);
+            this.lbTotal.Size = new System.Drawing.Size(50, 21);
             this.lbTotal.TabIndex = 3;
-            this.lbTotal.Text = "Date";
+            this.lbTotal.Text = "Price";
             // 
             // historyline
             // 
@@ -84,9 +84,9 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "historyline";
-            this.Size = new System.Drawing.Size(750, 80);
+            this.Size = new System.Drawing.Size(669, 80);
             this.ResumeLayout(false);
             this.PerformLayout();
 

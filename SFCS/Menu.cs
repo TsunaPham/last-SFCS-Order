@@ -33,12 +33,49 @@ namespace SFCS
         {
            
         }
-        public void Refresh()
+        public void viewMenu()
         {
             flowLayoutPanel1.Controls.Clear();
-            populate();
+            int count = countItem();
+            FoodItem[] flist = new FoodItem[count];
+
+
+            string foodname = "";
+            Int64 fprice;
+            int vendor;
+            bool avail;
+            string des;
+            byte[] img;
+            string sql = "select * from ItemDB";
+            cnn.Open();
+            SqlCommand cmd = new SqlCommand(sql, cnn);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int i = 0;
+            while (dr.Read())
+            {
+                foodname = dr["Name"].ToString();
+                fprice = (Int64)dr["Price"];
+                vendor = (int)dr["VendorID"];
+                avail = (bool)dr["Available"];
+                des = dr["Description"].ToString();
+                //if(dr["Id"].ToString()=="1") 
+                flist[i] = new FoodItem();
+                flist[i].FName = foodname;
+                flist[i].FPrice = fprice;
+                flist[i].FVendor = vendor;
+                flist[i].Avail = avail;
+                flist[i].Description = des;
+                if (avail == false) flist[i].Enabled = false;
+                var data = (byte[])dr["Image"]; var stream = new MemoryStream(data); flist[i].img = Image.FromStream(stream);
+                if (vendor == this.vid)
+                    flowLayoutPanel1.Controls.Add(flist[i]);
+
+                i++;
+
+            }
+            cnn.Close();
         }
-        public int countrow()
+        public int countItem()
         {
             string stmt = "SELECT COUNT(*) FROM ItemDB";
             int count = 0;
@@ -49,46 +86,6 @@ namespace SFCS
 
             return count;
         }
-        private void populate()
-        {
-            int count = countrow();
-            FoodItem[] flist = new FoodItem[count];
-           
-            
-            string foodname = "";
-            string fprice = "";
-            int vendor;
-            bool avail;
-            byte[] img;
-            string sql = "select * from ItemDB";
-            cnn.Open();
-            SqlCommand cmd = new SqlCommand(sql, cnn);
-            SqlDataReader dr = cmd.ExecuteReader();
-            int i = 0;
-            while (dr.Read())
-            {
-                foodname = dr["Name"].ToString();
-                fprice = dr["Price"].ToString();
-                vendor = (int)dr["VendorID"];
-                avail = (bool)dr["Available"];
-                //if(dr["Id"].ToString()=="1") 
-                flist[i] = new FoodItem();
-                flist[i].FName = foodname;
-                flist[i].FPrice = fprice;
-                flist[i].FVendor = vendor;
-                flist[i].Avail = avail;
-                if (avail == false) flist[i].Enabled = false;
-                var data = (byte[])dr["Image"]; var stream = new MemoryStream(data); flist[i].img = Image.FromStream(stream); 
-                if (vendor==this.vid)
-                flowLayoutPanel1.Controls.Add(flist[i]);
-                
-                i++;
-               
-            }
-            cnn.Close();
         
-           
-               
-        }
     }
 }

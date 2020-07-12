@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Net.Mail;
+using System.Net;
 
 namespace SFCS
 {
@@ -15,10 +17,15 @@ namespace SFCS
     {
         string OTP;
         string name = "";
-        int balance = 0;
+        string username = "";
+        int newbalance = 0;
+        string email = "";
+        cnnString cnnstr = new cnnString();
+        SqlConnection cnn;
         public Recharge()
         {
             InitializeComponent();
+            cnn = cnnstr.cnn;
             selectbox.Items.Add("Ocean Bank");
             selectbox.Items.Add("BIDV");
             selectbox.Items.Add("Vietcombank");
@@ -28,23 +35,25 @@ namespace SFCS
         }
         public void refresh()
         {
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\Desktop\SFCS\SFCS\AccountDB.mdf;Integrated Security=True;Connect Timeout=30");
-            string sql = "select * from Acctbl;";
-            int isActive;
+           
+            string sql = "select * from AccountDB;";
+            bool isActive;
             
-            con.Open();
-            SqlCommand cmd = new SqlCommand(sql, con);
+            cnn.Open();
+            SqlCommand cmd = new SqlCommand(sql, cnn);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                isActive = Convert.ToInt32(dr["isActive"].ToString().Trim());
-                balance = Convert.ToInt32(dr["balance"].ToString().Trim());
+                isActive = (bool)dr["isActive"];
+                newbalance = Convert.ToInt32(dr["balance"].ToString().Trim());
                 name = dr["Name"].ToString();
-                if (isActive == 1) break;
+                username = dr["Username"].ToString().Trim();
+                email = dr["Email"].ToString().Trim();
+                if (isActive == true) break;
             }
-            hellolbl.Text = "Hello " + name;
-            balancelbl.Text = balance.ToString()+" VND";
-            con.Close();
+            hellolbl.Text = "Xin chào " + name;
+            balancelbl.Text = newbalance.ToString()+" VND";
+            cnn.Close();
         }
         public void OTPgenerator()
         {
@@ -69,23 +78,65 @@ namespace SFCS
 
             
         }
-        public string getOTP() { return this.OTP; }
+        void sendOTPViaMail(string Email, string OTPcode)
+        {
+            try
+            {
+
+                MailMessage msg = new MailMessage();
+                msg.From = new MailAddress("zhiendpham@gmail.com");
+                msg.To.Add(Email);
+                msg.Subject = "Xác thực OTP";
+                string mail_body = "Mã OTP của bạn là " + OTPcode;
+                msg.Body = mail_body;
+
+                SmtpClient smt = new SmtpClient();
+                smt.Host = "smtp.gmail.com";
+                System.Net.NetworkCredential ntcd = new NetworkCredential();
+                ntcd.UserName = "zhiendpham@gmail.com";
+                ntcd.Password = "zhiendpham_1999";
+                smt.Credentials = ntcd;
+                smt.EnableSsl = true;
+                smt.Port = 587;
+                smt.Send(msg);
+
+                MessageBox.Show("Mã OTP đã được gửi đến hộp thư của bạn. Sử dụng OTP đó để xác thực trong form sau");
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Gửi mail thất bại. Hãy kiểm tra lại kết nối Internet của bạn");
+            }
+        }
+        public void calculateBalance(int amount)
+        {
+            
+            newbalance = amount + newbalance;
+        }
+
         private void Rechargebtn_Click(object sender, EventArgs e)
-        {   if (selectbox.Text == "" || numbox.Text == "" || accnamebox.Text == "" || amountbox.Text == "") MessageBox.Show("Please fill in all information");
+        {   if (selectbox.Text == "" || numbox.Text == "" || accnamebox.Text == "" || amountbox.Text == "") MessageBox.Show("Bạn phải nhập đầy đủ các thông tin");
             else
             {
                 this.OTPgenerator();
-                MessageBox.Show("Your OTP is " + OTP + ". Please confirm your OTP");
+                sendOTPViaMail(email, OTP);
+                
                 otPform1.setvalOTP(OTP);
-                otPform1.setname(name);
+                otPform1.setusername(username);
                 int amount = Convert.ToInt32(amountbox.Text.ToString().Trim());
-                int newbalance = amount + balance;
+                calculateBalance(amount);
                 otPform1.setbalance(newbalance);
                 otPform1.Show();
+                otPform1.confirmbtn.Click += new System.EventHandler(this.confirmbtn_Click);
                 this.refresh();
             }
 
 
+        }
+        private void confirmbtn_Click(object Sender, EventArgs e)
+        {
+            refresh();
         }
     }
 }

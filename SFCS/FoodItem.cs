@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Security.Policy;
+using System.Xml.Serialization;
 
 namespace SFCS
 {
@@ -24,9 +25,10 @@ namespace SFCS
         }
         private int _vendor;
         private string _fname;
-        private string _price;
+        private Int64 _price;
         private Image _image;
         private bool _avail;
+        private string description;
         public string FName
         {
             get
@@ -36,14 +38,14 @@ namespace SFCS
             set
             { _fname = value; lbName.Text = value; }
         }
-        public string FPrice
+        public Int64 FPrice
         {
             get
             {
                 return _price;
             }
             set
-            { _price = value; lbPrice.Text = value; }
+            { _price = value; lbPrice.Text = value.ToString(); }
         }
         public int FVendor
         {
@@ -81,31 +83,50 @@ namespace SFCS
             }
             set
             {
-                _avail = value;if (value == false) lbAvailable.Text = "Not available"; else lbAvailable.Text = "Avaialble";
+                _avail = value;if (value == false) lbAvailable.Text = "Hết"; else lbAvailable.Text = "Còn";
+            }
+        }
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+            set
+            {
+                description = value; lbDescrip.Text = value;
             }
         }
         private int addqty = 0;
         private void BtnPlus_Click(object sender, EventArgs e)
-        {   if (this.quantity<10)
-            this.quantity++;
+        {
+            amountUp();
+        }
+        private void amountUp()
+        {
+            if (this.quantity < 10)
+                this.quantity++;
             lbQty.Text = this.quantity.ToString();
             btnAdd.Enabled = true;
         }
-
         private void BtnMinus_Click(object sender, EventArgs e)
+        {
+            amountDown();
+        }
+        private void amountDown()
         {
             if (this.quantity > 0)
             { this.quantity--; btnAdd.Enabled = true; }
-            
+
             lbQty.Text = this.quantity.ToString();
             btnAdd.Enabled = this.quantity > 0;
-        }
 
+        }
         private void LbQty_Click(object sender, EventArgs e)
         {
 
         }
-       private void addfooditem()
+       private void addFoodItem()
         {
            
             string sql = "INSERT INTO TempoOrder(Name,Quantity,SubPrice,VendorID) VALUES(@Name,@Quantity,@Subprice,@VendorID)";
@@ -115,15 +136,15 @@ namespace SFCS
            
                 cmd.Parameters.AddWithValue("@Name", FName);
                 cmd.Parameters.AddWithValue("@Quantity", this.quantity);
-                int k = Convert.ToInt32(FPrice.Trim());
-                int subprice = k * this.quantity;
+                Int64 k = FPrice;
+                Int64 subprice = k * this.quantity;
                 cmd.Parameters.AddWithValue("@Subprice", subprice);
                 cmd.Parameters.AddWithValue("@VendorID", FVendor);
                 cmd.ExecuteNonQuery();
             
             cnn.Close();
         }
-        private void searchitem()
+        private void searchItem()
         {
             string sql= "select * from TempoOrder";
             string name = "";
@@ -143,7 +164,7 @@ namespace SFCS
             }
             cnn.Close();
         }
-        private void updateitem()
+        private void updateItem()
         {
             string sql = "update TempoOrder set Quantity=@qty,Subprice=@sub where Name=@name";
             SqlCommand cmd = new SqlCommand(sql, cnn);
@@ -151,8 +172,8 @@ namespace SFCS
             cnn.Open();
             cmd.Parameters.AddWithValue("@name", FName);
             cmd.Parameters.AddWithValue("@qty", newqty);
-            int k = Convert.ToInt32(FPrice.Trim());
-            int subprice = newqty * k;
+           
+            Int64 subprice = newqty *FPrice;
             cmd.Parameters.AddWithValue("@sub", subprice);
             cmd.ExecuteNonQuery();
             cnn.Close();
@@ -160,14 +181,18 @@ namespace SFCS
         }
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            addqty = 0;
-            searchitem();
-            if (addqty == 0) addfooditem();
-            else updateitem();
-            quantity = 0;btnAdd.Enabled = false;
-            lbQty.Text = "0";
+            addToCart();
 
             
+        }
+        private void addToCart()
+        {
+            addqty = 0;
+            searchItem();
+            if (addqty == 0) addFoodItem();
+            else updateItem();
+            quantity = 0; btnAdd.Enabled = false;
+            lbQty.Text = "0";
         }
     }
 }
