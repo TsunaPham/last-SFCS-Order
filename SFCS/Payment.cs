@@ -69,8 +69,11 @@ namespace SFCS
         public void setlist(List<CartItem> list)
         {
             int n = list.Count();
-            
-            cartlist = list;
+            for (int i = 0; i < n; i++)
+            {
+                cartlist.Add(list[i]);
+                
+            }
         }
         private int amount;
        
@@ -126,7 +129,8 @@ namespace SFCS
 
             orderID = orderid();
             cnn.Open();
-            for (int i = 0; i < amount; i++)
+            MessageBox.Show(cartlist[0].FName);
+            for (int i = 0; i < cartlist.Count(); i++)
             {
                 string sql = "INSERT INTO OrderLineDB(OrderID,Name,Quantity,SubPrice,VendorID) VALUES(@OrderID,@Name,@Quantity,@SubPrice,@VendorID)";
                 SqlCommand cmd = new SqlCommand(sql, cnn);
