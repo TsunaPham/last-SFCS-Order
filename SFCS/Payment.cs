@@ -129,7 +129,7 @@ namespace SFCS
 
             orderID = orderid();
             cnn.Open();
-            MessageBox.Show(cartlist[0].FName);
+            
             for (int i = 0; i < cartlist.Count(); i++)
             {
                 string sql = "INSERT INTO OrderLineDB(OrderID,Name,Quantity,SubPrice,VendorID) VALUES(@OrderID,@Name,@Quantity,@SubPrice,@VendorID)";
