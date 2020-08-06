@@ -82,7 +82,7 @@ namespace SFCS
                 string password = findPassword(Emailtxt.Text.Trim());
                 if (password != "")
                 {
-                    mail(password, Emailtxt.Text.Trim());
+                    mail(Emailtxt.Text.Trim(),password);
                     this.Hide();
                 }
                 else { MessageBox.Show("Email này chưa được đăng kí."); }
