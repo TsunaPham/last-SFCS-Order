@@ -43,10 +43,10 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.linkForgot = new System.Windows.Forms.LinkLabel();
             this.Changebtn = new System.Windows.Forms.Button();
-            this.newRegister1 = new SFCS.Register();
-            this.wrongPassword1 = new SFCS.WrongPassword();
             this.changePassword1 = new SFCS.ChangePassword();
+            this.wrongPassword1 = new SFCS.WrongPassword();
             this.history1 = new SFCS.History();
+            this.register1 = new SFCS.Register();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -208,26 +208,19 @@
             this.Changebtn.UseVisualStyleBackColor = false;
             this.Changebtn.Click += new System.EventHandler(this.Changebtn_Click);
             // 
-            // newRegister1
+            // changePassword1
             // 
-            this.newRegister1.Location = new System.Drawing.Point(0, 0);
-            this.newRegister1.Name = "newRegister1";
-            this.newRegister1.Size = new System.Drawing.Size(805, 444);
-            this.newRegister1.TabIndex = 30;
+            this.changePassword1.Location = new System.Drawing.Point(0, 0);
+            this.changePassword1.Name = "changePassword1";
+            this.changePassword1.Size = new System.Drawing.Size(805, 444);
+            this.changePassword1.TabIndex = 30;
             // 
             // wrongPassword1
             // 
-            this.wrongPassword1.Location = new System.Drawing.Point(88, 317);
+            this.wrongPassword1.Location = new System.Drawing.Point(0, -3);
             this.wrongPassword1.Name = "wrongPassword1";
             this.wrongPassword1.Size = new System.Drawing.Size(805, 444);
             this.wrongPassword1.TabIndex = 31;
-            // 
-            // changePassword1
-            // 
-            this.changePassword1.Location = new System.Drawing.Point(3, 0);
-            this.changePassword1.Name = "changePassword1";
-            this.changePassword1.Size = new System.Drawing.Size(805, 444);
-            this.changePassword1.TabIndex = 32;
             // 
             // history1
             // 
@@ -235,17 +228,24 @@
             this.history1.Location = new System.Drawing.Point(1, 0);
             this.history1.Name = "history1";
             this.history1.Size = new System.Drawing.Size(804, 443);
-            this.history1.TabIndex = 33;
+            this.history1.TabIndex = 32;
+            // 
+            // register1
+            // 
+            this.register1.Location = new System.Drawing.Point(0, -1);
+            this.register1.Name = "register1";
+            this.register1.Size = new System.Drawing.Size(805, 444);
+            this.register1.TabIndex = 33;
             // 
             // LoginControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.register1);
             this.Controls.Add(this.history1);
-            this.Controls.Add(this.changePassword1);
             this.Controls.Add(this.wrongPassword1);
-            this.Controls.Add(this.newRegister1);
+            this.Controls.Add(this.changePassword1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Registerbtn);
@@ -286,9 +286,9 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.LinkLabel linkForgot;
         private System.Windows.Forms.Button Changebtn;
-        private Register newRegister1;
-        private WrongPassword wrongPassword1;
         private ChangePassword changePassword1;
+        private WrongPassword wrongPassword1;
         private History history1;
+        private Register register1;
     }
 }

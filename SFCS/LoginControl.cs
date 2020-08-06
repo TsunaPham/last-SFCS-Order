@@ -22,7 +22,7 @@ namespace SFCS
             InitializeComponent();
             cnn = cnnstr.cnn;
             history1.Hide();
-            newRegister1.Hide();
+            register1.Hide();
             wrongPassword1.Hide();
             changePassword1.Hide();
         }
@@ -102,7 +102,7 @@ namespace SFCS
 
         private void Registerbtn_Click(object sender, EventArgs e)
         {
-            newRegister1.Show();
+           register1.Show();
 
         }
 
